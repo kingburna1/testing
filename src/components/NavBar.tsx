@@ -13,6 +13,13 @@ import {
 import { Button } from './ui/button';
 import { useTheme } from "next-themes";
 import { SidebarTrigger } from './ui/sidebar';
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
   
 
 
@@ -73,6 +80,13 @@ const navbar = () => {
     <DropdownMenuItem><User  className='h-[1.2rem] w-[1.2rem] mr-2'/> profile</DropdownMenuItem>
     <DropdownMenuItem><Settings  className='h-[1.2rem] w-[1.2rem] mr-2'/> Settings</DropdownMenuItem>
     <DropdownMenuItem><LogIn  className='h-[1.2rem] w-[1.2rem] mr-2'/> login</DropdownMenuItem>
+               <SignedOut>
+               <SignInButton />
+               <SignUpButton />
+               </SignedOut>
+               <SignedIn>
+               <UserButton />
+               </SignedIn>
     <DropdownMenuItem variant='destructive'><LogOut  className='h-[1.2rem] w-[1.2rem] mr-2'/> logout</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>

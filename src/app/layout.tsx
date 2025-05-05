@@ -6,7 +6,10 @@ import NavBar from "@/components/NavBar";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
-
+import {
+  ClerkProvider,
+ 
+} from '@clerk/nextjs'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +35,7 @@ export default async function RootLayout({
   const cookiesStore = await cookies ()
   const defaultOpen = cookiesStore.get("sidebar_state")?.value ==="true"
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body
         className= {`${geistSans.variable} ${geistMono.variable} antialiased flex `}
@@ -50,7 +54,9 @@ export default async function RootLayout({
         </main>
         </SidebarProvider>
         </ThemeProvider>
+      
       </body>
     </html>
+    </ClerkProvider>
   );
 }
